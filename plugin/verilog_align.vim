@@ -29,9 +29,9 @@ function! AlignPortsFunction(mode, visual)
     let max_bracket_content_length = 0
     let max_signal_name_length     = 0
     for line in lines
-        if line =~ '\v^\s*(input|output|inout)\s*(reg|wire)?\s*(\[.*\])?\s*\w+\s*(,)?\s*(.*)?'
+        if line =~ '\v^\s*(input|output|inout)\s*(\breg|wire\b)?\s*(\[.*\])?\s*\w+\s*(,)?\s*(.*)?'
             let line   = substitute(line, '^\s*', '', '')
-            let groups = matchlist(line, '\v^\s*(input|output|inout)\s*(reg|wire)?\s*(\[.*\])?\s*(\w+)\s*(,)?\s*(.*)?')
+            let groups = matchlist(line, '\v^\s*(input|output|inout)\s*(\breg|wire\b)?\s*(\[.*\])?\s*(\w+)\s*(,)?\s*(.*)?')
 
             let bracket_content_length = len(groups[3])
             let signal_name_length     = len(groups[4])
@@ -47,9 +47,9 @@ function! AlignPortsFunction(mode, visual)
     endfor
 
     for line in lines
-        if line =~ '\v^\s*(input|output|inout)\s*(reg|wire)?\s*(\[.*\])?\s*\w+\s*(,)?\s*(.*)?'
+        if line =~ '\v^\s*(input|output|inout)\s*(\breg|wire\b)?\s*(\[.*\])?\s*\w+\s*(,)?\s*(.*)?'
             let line   = substitute(line, '^\s*', '', '')
-            let groups = matchlist(line, '\v^\s*(input|output|inout)\s*(reg|wire)?\s*(\[.*\])?\s*(\w+)\s*(,)?\s*(.*)?')
+            let groups = matchlist(line, '\v^\s*(input|output|inout)\s*(\breg|wire\b)?\s*(\[.*\])?\s*(\w+)\s*(,)?\s*(.*)?')
 
             let line = '    '
 
